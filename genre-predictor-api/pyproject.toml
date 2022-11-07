@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "genre-predictor-api"
+version = "0.1.0"
+description = "Music genre predictor API that hosts the ML models"
+authors = ["Alejandro Morales <a.moralesc@javeriana.edu.co>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "genre_predictor_api"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+uvicorn = {extras = ["standard"], version = "^0.19.0"}
+fastapi = "^0.86.0"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^22.10.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

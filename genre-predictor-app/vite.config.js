@@ -6,6 +6,7 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   plugins: [react()],
   server: {
-    open: true,
+    open: true, // open browser on server start
+    port: 3000, // to run like CRA
   },
 });

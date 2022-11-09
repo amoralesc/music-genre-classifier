@@ -2,12 +2,14 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
+    "vitest-globals/env": true,
   },
   extends: [
     "plugin:react/recommended",
     "airbnb",
     "prettier",
     "plugin:prettier/recommended",
+    "plugin:vitest-globals/recommended",
   ],
   overrides: [],
   parserOptions: {
@@ -41,10 +43,17 @@ module.exports = {
     "react/jsx-props-no-spreading": "off",
     "no-shadow": "off",
     "no-console": "off",
+    "import/extensions": "off",
   },
   settings: {
     react: {
       version: "detect",
+    },
+    "import/resolver": {
+      node: {
+        extensions: [".js", ".jsx", ".ts", ".tsx", ".d.ts", ".d.tsx"],
+        moduleDirectory: ["node_modules", "src/"],
+      },
     },
   },
   // ignore patterns

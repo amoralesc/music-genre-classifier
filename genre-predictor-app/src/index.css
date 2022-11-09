@@ -13,6 +13,19 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+  --color-primary: #fff;
+  --color-primary-dark: #bdbdbd;
+  --bg-color-primary: #646cff;
+  --bg-color-primary-dark: #535bf2;
+
+  --color-secondary: #213547;
+  --color-secondary-dark: #1a2a3a;
+  --bg-color-secondary: #f9f9f9;
+  --bg-color-secondary-dark: #d2d1d1;
+
+  --color-success: #00e676;
+  --color-error: #ff1744;
 }
 
 body {

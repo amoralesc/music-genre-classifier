@@ -28,12 +28,12 @@ const About = () => (
     <h2>Authors</h2>
     <ul>
       <li>
-        <a href="www.github.com/amoralesc">Alejandro Morales</a> is Systems
-        Engineering student at the Pontifical Xaverian University. He is
+        <a href="https://github.com/amoralesc">Alejandro Morales</a> is a
+        Systems Engineering student at the Pontifical Xaverian University. He is
         currently completing his final year of studies.
       </li>
       <li>
-        <a href="/">Sebastián Vargas</a> is Systems Engineering student at the
+        <a href="/">Sebastián Vargas</a> is a Systems Engineering student at the
         Pontifical Xaverian University. He is currently completing his final
         year of studies.
       </li>

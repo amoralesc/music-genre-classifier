@@ -7,6 +7,11 @@
   transition: all 0.2s ease-in-out;
 }
 
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .btn-sm {
   padding: 0.25rem 0.5rem;
   font-size: 0.8rem;

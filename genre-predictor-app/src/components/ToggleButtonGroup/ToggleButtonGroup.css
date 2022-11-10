@@ -1,0 +1,17 @@
+.toggle-button-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+
+  margin: 0 auto;
+  width: 100%;
+}
+
+.group-horizontal {
+  flex-direction: row;
+}
+
+.group-vertical {
+  flex-direction: column;
+}

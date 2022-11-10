@@ -2,19 +2,28 @@
 import "./Button.css";
 
 const Button = ({
-  variant = "primary",
-  outline = false,
-  size = "md",
-  type = "button",
   onClick,
   children,
+  type = "button",
+  variant = "primary",
+  outline = false,
+  active = false,
+  size = "md",
+  className = "",
+  ...props
 }) => {
-  // map the variant prop to a CSS class
   const variantClass = `btn-${outline ? "outline-".concat(variant) : variant}`;
-  const classes = `btn ${variantClass} btn-${size}`;
+  const classes = `btn ${variantClass} btn-${size} ${
+    active ? "active" : ""
+  } ${className}`.trim();
 
   return (
-    <button type={type || "button"} onClick={onClick} className={classes}>
+    <button
+      type={type || "button"}
+      onClick={onClick}
+      className={classes}
+      {...props}
+    >
       {children}
     </button>
   );

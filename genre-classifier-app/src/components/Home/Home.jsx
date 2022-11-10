@@ -1,14 +1,20 @@
 import { useState } from "react";
 
+import "./Home.css";
+import firebaseService from "../../services/firebase/firebase";
+
 import Button from "../Button/Button";
 import ToggleButton from "../ToggleButton/ToggleButton";
 import ToggleButtonGroup from "../ToggleButtonGroup/ToggleButtonGroup";
 import Dropzone from "../Dropzone/Dropzone";
 import UploadedFiles from "../UploadedFiles/UploadedFiles";
+import ProgressBar from "../ProgressBar/ProgressBar";
 
 const Home = () => {
   const [file, setFile] = useState(null);
   const [models, setModels] = useState([]);
+  const [uploadProgress, setUploadProgress] = useState(0);
+  const [task, setTask] = useState(null);
 
   const handleDrop = (acceptedFiles) => {
     if (acceptedFiles.length > 0) {
@@ -22,6 +28,27 @@ const Home = () => {
 
   const handleToggle = (active) => {
     setModels(active);
+  };
+
+  const handleUpload = () => {
+    setTask("Uploading file to storage service...");
+
+    if (file) {
+      firebaseService.uploadFile(
+        file,
+        (progress) => {
+          setUploadProgress(progress);
+        },
+        (downloadURL) => {
+          console.log(downloadURL);
+          setTask("File uploaded successfully!");
+        },
+        (error) => {
+          console.log(error);
+          setTask("Error uploading file!");
+        }
+      );
+    }
   };
 
   return (
@@ -39,25 +66,32 @@ const Home = () => {
 
           <p>Now select the models to classify the song with:</p>
           <ToggleButtonGroup value={models} onChange={handleToggle} required>
-            <ToggleButton value="mlp" outline>
+            <ToggleButton value="mlp" variant="secondary" outline>
               MLP Neural Network
             </ToggleButton>
-            <ToggleButton value="knn" outline>
+            <ToggleButton value="knn" variant="secondary" outline>
               K-Nearest Neighbors
             </ToggleButton>
-            <ToggleButton value="svm" outline>
+            <ToggleButton value="svm" variant="secondary" outline>
               Support Vector Machine
             </ToggleButton>
           </ToggleButtonGroup>
 
-          <Button
-            variant="primary"
-            size="lg"
-            onClick={() => console.log("hello world!")}
-            style={{ marginTop: "1rem" }}
-          >
-            Upload
-          </Button>
+          <div className="upload-bar">
+            {task ? (
+              <Button variant="primary" onClick={handleUpload} disabled>
+                Upload
+              </Button>
+            ) : (
+              <Button variant="primary" onClick={handleUpload}>
+                Upload
+              </Button>
+            )}
+
+            <ProgressBar progress={uploadProgress} />
+          </div>
+
+          <p>{task}</p>
         </>
       )}
     </div>

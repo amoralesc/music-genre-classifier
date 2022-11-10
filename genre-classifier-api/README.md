@@ -1,6 +1,6 @@
-# Genre Predictor API
+# Genre Classifier API
 
-This project is the backend part of the music genre predictor. It's a simple API that uses a pre-trained model to predict the genre of a 30 second clip song. It was developed with Python + FastAPI.
+This project is the backend part of the music genre classifier. It's a simple API that uses a pre-trained model to determine the genre of a 30 second clip song. It was developed with Python + FastAPI.
 
 ## Tech Stack
 

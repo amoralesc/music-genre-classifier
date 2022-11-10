@@ -26,8 +26,8 @@ const Home = () => {
 
   return (
     <div className="home">
-      <h1>Music Genre Predictor</h1>
-      <p>Go ahead and upload a song to predict its genre!</p>
+      <h1>Music Genre Classifier</h1>
+      <p>Go ahead and upload a song to determine its genre!</p>
       <Dropzone onDrop={handleDrop} />
 
       {file && (
@@ -37,7 +37,7 @@ const Home = () => {
           </p>
           <UploadedFiles files={[file]} removeFile={handleRemoveFile} />
 
-          <p>Now select the models to predict with:</p>
+          <p>Now select the models to classify the song with:</p>
           <ToggleButtonGroup value={models} onChange={handleToggle} required>
             <ToggleButton value="mlp">MLP Neural Network</ToggleButton>
             <ToggleButton value="knn">K-Nearest Neighbors</ToggleButton>

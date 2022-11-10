@@ -1,11 +1,11 @@
 [tool.poetry]
-name = "genre-predictor-api"
+name = "genre-classifier-api"
 version = "0.1.0"
-description = "Music genre predictor API that hosts the ML models"
+description = "Music genre classifier API that hosts the ML models"
 authors = ["Alejandro Morales <a.moralesc@javeriana.edu.co>"]
 license = "MIT"
 readme = "README.md"
-packages = [{include = "genre_predictor_api"}]
+packages = [{include = "genre_classifier_api"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"

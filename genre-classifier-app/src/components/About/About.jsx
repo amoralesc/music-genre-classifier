@@ -16,12 +16,12 @@ const About = () => (
         country, disco, hiphop, jazz, metal, pop, reggae, rock)
       </li>
       <li>
-        Train three different machine learning models to predict the genre of a
+        Train three different machine learning models to classify the genre of a
         song based on its audio features (using the dataset)
       </li>
       <li>
         Create an user facing application that allows the user to upload an
-        audio file and predict the genre of the song using the trained models
+        audio file and determine the genre of the song using the trained models
       </li>
     </ul>
 

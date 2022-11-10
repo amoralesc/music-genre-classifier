@@ -1,6 +1,6 @@
-# Genre Predictor App
+# Genre Classifier App
 
-This project is the frontend part of the music genre predictor. It's a simple web app that uses the [genre predictor API](../genre-predictor-api/) to predict the genre of a 30 second clip song. It was developed with ReactJS + Vite.
+This project is the frontend part of the music genre classifier. It's a simple web app that uses the [genre classifier API](../genre-classifier-api/) to determine the genre of a 30 second clip song. It was developed with ReactJS + Vite.
 
 ## Tech Stack
 
@@ -12,7 +12,7 @@ This project is the frontend part of the music genre predictor. It's a simple we
 ### Prerequisites
 
 - [Node.js](https://nodejs.org/en/) installed and the `node` and `npm` commands available in the terminal
-- The [genre predictor API](../genre-predictor-api/) must be already running locally. Check the running locally section of the project for more information.
+- The [genre classifier API](../genre-classifier-api/) must be already running locally. Check the running locally section of the project for more information.
 
 ### Running the project in dev mode
 

@@ -53,7 +53,7 @@ const ToggleButtonGroup = ({
         const { value: childValue } = child.props;
         return cloneElement(child, {
           onClick: handleClick,
-          active: value.includes(childValue),
+          toggled: value.includes(childValue),
         });
       })}
     </div>

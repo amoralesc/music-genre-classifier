@@ -30,7 +30,7 @@
   background-color: var(--bg-color-primary);
 }
 .btn-primary:hover,
-.btn-primary.active {
+.btn-primary.toggled {
   background-color: var(--bg-color-primary-dark);
 }
 
@@ -39,7 +39,7 @@
   background-color: var(--bg-color-secondary);
 }
 .btn-secondary:hover,
-.btn-secondary.active {
+.btn-secondary.toggled {
   background-color: var(--bg-color-secondary-dark);
 }
 
@@ -48,7 +48,7 @@
   background-color: var(--color-success);
 }
 .btn-success:hover,
-.btn-success.active {
+.btn-success.toggled {
   background-color: var(--color-success-dark);
 }
 
@@ -57,7 +57,7 @@
   background-color: var(--color-error);
 }
 .btn-danger:hover,
-.btn-danger.active {
+.btn-danger.toggled {
   background-color: var(--color-error-dark);
 }
 
@@ -66,7 +66,7 @@
   background-color: var(--color-info);
 }
 .btn-info:hover,
-.btn-info.active {
+.btn-info.toggled {
   background-color: var(--color-info-dark);
 }
 
@@ -77,7 +77,7 @@
   background-color: transparent;
 }
 .btn-outline-primary:hover,
-.btn-outline-primary.active {
+.btn-outline-primary.toggled {
   color: var(--color-primary);
   background-color: var(--bg-color-primary);
 }
@@ -89,7 +89,7 @@
   background-color: transparent;
 }
 .btn-outline-secondary:hover,
-.btn-outline-secondary.active {
+.btn-outline-secondary.toggled {
   color: var(--color-secondary-dark);
   background-color: var(--bg-color-secondary);
 }
@@ -101,7 +101,7 @@
   background-color: transparent;
 }
 .btn-outline-success:hover,
-.btn-outline-success.active {
+.btn-outline-success.toggled {
   color: var(--color-success);
   background-color: var(--color-success);
 }
@@ -113,7 +113,7 @@
   background-color: transparent;
 }
 .btn-outline-danger:hover,
-.btn-outline-danger.active {
+.btn-outline-danger.toggled {
   color: var(--color-error);
   background-color: var(--color-error);
 }
@@ -125,7 +125,7 @@
   background-color: transparent;
 }
 .btn-outline-info:hover,
-.btn-outline-info.active {
+.btn-outline-info.toggled {
   color: var(--color-info);
   background-color: var(--color-info);
 }

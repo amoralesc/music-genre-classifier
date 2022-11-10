@@ -7,14 +7,14 @@ const Button = ({
   type = "button",
   variant = "primary",
   outline = false,
-  active = false,
+  toggled = false,
   size = "md",
   className = "",
   ...props
 }) => {
   const variantClass = `btn-${outline ? "outline-".concat(variant) : variant}`;
   const classes = `btn ${variantClass} btn-${size} ${
-    active ? "active" : ""
+    toggled ? "toggled" : ""
   } ${className}`.trim();
 
   return (

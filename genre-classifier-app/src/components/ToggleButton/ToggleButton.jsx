@@ -1,8 +1,8 @@
 import Button from "../Button/Button";
 
-const ToggleButton = ({ value, active, onClick, children, ...props }) => {
+const ToggleButton = ({ value, toggled, onClick, children, ...props }) => {
   return (
-    <Button onClick={() => onClick(value)} {...props} active={active}>
+    <Button onClick={() => onClick(value)} toggled={toggled} {...props}>
       {children}
     </Button>
   );

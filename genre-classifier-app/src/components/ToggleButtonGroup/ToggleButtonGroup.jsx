@@ -10,6 +10,7 @@ const ToggleButtonGroup = ({
   required = false,
   orientation = "horizontal",
   className = "",
+  ...props
 }) => {
   useEffect(() => {
     if (required && value.length === 0) {
@@ -47,7 +48,7 @@ const ToggleButtonGroup = ({
     `toggle-button-group group-${orientation} ${className}`.trim();
 
   return (
-    <div className={classes}>
+    <div className={classes} {...props}>
       {Children.map(children, (child) => {
         const { value: childValue } = child.props;
         return cloneElement(child, {

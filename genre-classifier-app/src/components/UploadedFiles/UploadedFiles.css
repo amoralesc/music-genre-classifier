@@ -11,6 +11,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  gap: 1rem;
 
   box-sizing: border-box;
   width: 100%;
@@ -28,7 +29,13 @@
   border-color: var(--bg-color-primary);
 }
 
-.uploaded-file p {
+.uploaded-file > div {
+  width: 100%;
+  max-width: fit-content;
+
+  word-break: break-word;
+  text-align: left;
+
   font-size: 0.8rem;
-  line-height: 0rem;
+  line-height: 0.8rem;
 }

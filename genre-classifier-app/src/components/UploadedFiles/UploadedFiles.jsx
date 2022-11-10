@@ -6,13 +6,21 @@ import "./UploadedFiles.css";
 const UploadedFiles = ({ files, removeFile }) => {
   const audios = files.map((file) => useAudio(URL.createObjectURL(file)));
 
+  const handleRemoveFile = async (file, index) => {
+    if (audios[index][0]) {
+      await audios[index][1]();
+    }
+    URL.revokeObjectURL(file);
+    removeFile(file);
+  };
+
   return (
     <div className="uploaded-files">
       {files.map((file, index) => (
         <div key={file.name} className="uploaded-file">
-          <p>
+          <div>
             {file.name} - {file.size} bytes
-          </p>
+          </div>
           <div>
             <Button
               variant={audios[index][0] ? "info" : "success"}
@@ -24,7 +32,7 @@ const UploadedFiles = ({ files, removeFile }) => {
             <Button
               variant="danger"
               size="sm"
-              onClick={() => removeFile(file)}
+              onClick={() => handleRemoveFile(file, index)}
               style={{ marginLeft: "0.5rem" }}
             >
               remove

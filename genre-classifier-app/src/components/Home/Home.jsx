@@ -7,8 +7,8 @@ import Dropzone from "../Dropzone/Dropzone";
 import UploadedFiles from "../UploadedFiles/UploadedFiles";
 
 const Home = () => {
-  const [models, setModels] = useState([]);
   const [file, setFile] = useState(null);
+  const [models, setModels] = useState([]);
 
   const handleDrop = (acceptedFiles) => {
     if (acceptedFiles.length > 0) {
@@ -33,18 +33,29 @@ const Home = () => {
       {file && (
         <>
           <p>
-            <strong>Uploaded Files</strong>
+            <strong>Selected File</strong>
           </p>
           <UploadedFiles files={[file]} removeFile={handleRemoveFile} />
 
           <p>Now select the models to classify the song with:</p>
           <ToggleButtonGroup value={models} onChange={handleToggle} required>
-            <ToggleButton value="mlp">MLP Neural Network</ToggleButton>
-            <ToggleButton value="knn">K-Nearest Neighbors</ToggleButton>
-            <ToggleButton value="svm">Support Vector Machine</ToggleButton>
+            <ToggleButton value="mlp" outline>
+              MLP Neural Network
+            </ToggleButton>
+            <ToggleButton value="knn" outline>
+              K-Nearest Neighbors
+            </ToggleButton>
+            <ToggleButton value="svm" outline>
+              Support Vector Machine
+            </ToggleButton>
           </ToggleButtonGroup>
 
-          <Button variant="primary" onClick={() => console.log("hello world!")}>
+          <Button
+            variant="primary"
+            size="lg"
+            onClick={() => console.log("hello world!")}
+            style={{ marginTop: "1rem" }}
+          >
             Upload
           </Button>
         </>

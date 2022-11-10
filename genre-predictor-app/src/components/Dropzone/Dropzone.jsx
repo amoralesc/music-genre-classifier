@@ -42,7 +42,7 @@ const Dropzone = ({
     if (isDragReject) {
       return "Unsupported file type...";
     }
-    return `Drag 'n' drop ${some} file${plural} here, or click to select ${some} file${plural}`;
+    return `Drag & drop ${some} file${plural} here, or click to select ${some} file${plural}`;
   };
 
   const getSupportedFileTypes = () => {

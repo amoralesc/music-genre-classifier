@@ -13,8 +13,9 @@
   transition: border 0.2s ease-in-out;
 }
 
+.dropzone:hover,
 .dropzone:focus {
-  border-color: var(--bg-color-primary-dark);
+  border-color: var(--bg-color-primary);
 }
 
 .dropzone--active {

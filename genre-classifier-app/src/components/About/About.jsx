@@ -33,9 +33,9 @@ const About = () => (
         currently completing his final year of studies.
       </li>
       <li>
-        <a href="/">Sebastián Vargas</a> is a Systems Engineering student at the
-        Pontifical Xaverian University. He is currently completing his final
-        year of studies.
+        <a href="https://github.com/Sebas102507">Sebastián Vargas</a> is a
+        Systems Engineering student at the Pontifical Xaverian University. He is
+        currently completing his final year of studies.
       </li>
     </ul>
   </div>

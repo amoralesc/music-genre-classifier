@@ -8,7 +8,7 @@ import modelService from "../../services/api/model";
 
 import Button from "../Button/Button";
 import Dropzone from "../Dropzone/Dropzone";
-import UploadedFiles from "../UploadedFiles/UploadedFiles";
+import AudioFile from "../AudioFile/AudioFile";
 import ToggleButtonGroup from "../ToggleButtonGroup/ToggleButtonGroup";
 import ToggleButton from "../ToggleButton/ToggleButton";
 import ProgressBar from "../ProgressBar/ProgressBar";
@@ -37,6 +37,7 @@ const Home = () => {
   const handleDrop = (acceptedFiles) => {
     if (acceptedFiles.length > 0) {
       setFile(acceptedFiles[0]);
+
       setUploadProgress(0);
       setGenre([]);
       setTask(null);
@@ -53,6 +54,7 @@ const Home = () => {
 
   const handlePredict = async (downloadURL) => {
     const data = {
+      fileName: file.name,
       fileUrl: downloadURL,
       userGenres: genre,
     };
@@ -94,7 +96,7 @@ const Home = () => {
           <p>
             <strong>Selected File</strong>
           </p>
-          <UploadedFiles files={[file]} removeFile={handleRemoveFile} />
+          <AudioFile file={file} removeFile={handleRemoveFile} />
 
           <p>What genre do you think this song is? Select all that apply.</p>
           <ToggleButtonGroup value={genre} onChange={handleGenreChange}>

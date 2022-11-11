@@ -1,12 +1,4 @@
-.uploaded-files {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-}
-
-.uploaded-file {
+.audio-file {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -24,12 +16,12 @@
   transition: all 0.2s ease-in-out;
 }
 
-.uploaded-file:hover {
+.audio-file:hover {
   color: var(--bg-color-primary);
   border-color: var(--bg-color-primary);
 }
 
-.uploaded-file > div {
+.audio-file > div {
   width: 100%;
   max-width: fit-content;
 

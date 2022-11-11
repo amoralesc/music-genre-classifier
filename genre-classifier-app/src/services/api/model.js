@@ -1,16 +1,9 @@
-const dummyModel = {
-  name: "MLP Neural Network",
-  slug: "mlp",
-  description: "A multi-layer perceptron neural network",
-  createdAt: Date.now(),
-};
-
-const get = async () => {
-  return dummyModel;
+const predict = async (_data) => {
+  return 1;
 };
 
 const modelService = {
-  get,
+  predict,
 };
 
 export default modelService;

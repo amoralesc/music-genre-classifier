@@ -4,17 +4,30 @@ import "./Home.css";
 import firebaseService from "../../services/firebase/firebase";
 
 import Button from "../Button/Button";
-import ToggleButton from "../ToggleButton/ToggleButton";
-import ToggleButtonGroup from "../ToggleButtonGroup/ToggleButtonGroup";
 import Dropzone from "../Dropzone/Dropzone";
 import UploadedFiles from "../UploadedFiles/UploadedFiles";
+import ToggleButtonGroup from "../ToggleButtonGroup/ToggleButtonGroup";
+import ToggleButton from "../ToggleButton/ToggleButton";
 import ProgressBar from "../ProgressBar/ProgressBar";
 
 const Home = () => {
   const [file, setFile] = useState(null);
-  const [models, setModels] = useState([]);
+  const [genre, setGenre] = useState([]);
   const [uploadProgress, setUploadProgress] = useState(0);
   const [task, setTask] = useState(null);
+
+  const genres = [
+    "blues",
+    "classical",
+    "country",
+    "disco",
+    "hiphop",
+    "jazz",
+    "metal",
+    "pop",
+    "reggae",
+    "rock",
+  ];
 
   const handleDrop = (acceptedFiles) => {
     if (acceptedFiles.length > 0) {
@@ -26,8 +39,8 @@ const Home = () => {
     setFile(null);
   };
 
-  const handleToggle = (active) => {
-    setModels(active);
+  const handleGenreChange = (genre) => {
+    setGenre(genre);
   };
 
   const handleUpload = () => {
@@ -64,17 +77,17 @@ const Home = () => {
           </p>
           <UploadedFiles files={[file]} removeFile={handleRemoveFile} />
 
-          <p>Now select the models to classify the song with:</p>
-          <ToggleButtonGroup value={models} onChange={handleToggle} required>
-            <ToggleButton value="mlp" variant="secondary" outline>
-              MLP Neural Network
-            </ToggleButton>
-            <ToggleButton value="knn" variant="secondary" outline>
-              K-Nearest Neighbors
-            </ToggleButton>
-            <ToggleButton value="svm" variant="secondary" outline>
-              Support Vector Machine
-            </ToggleButton>
+          <ToggleButtonGroup
+            value={genre}
+            onChange={handleGenreChange}
+            exclusive
+            required
+          >
+            {genres.map((genre) => (
+              <ToggleButton key={genre} value={genre}>
+                {genre}
+              </ToggleButton>
+            ))}
           </ToggleButtonGroup>
 
           <div className="upload-bar">

@@ -2,7 +2,7 @@
 name = "genre-classifier-api"
 version = "0.1.0"
 description = "Music genre classifier API that hosts the ML models"
-authors = ["Alejandro Morales <a.moralesc@javeriana.edu.co>", "Juan Sebastián Vargas Torres <email@a.com>"]
+authors = ["Alejandro Morales <a.moralesc@javeriana.edu.co>", "Juan Sebastián Vargas Torres <vargas_jsebastian@javeriana.edu.co>"]
 license = "MIT"
 readme = "README.md"
 packages = [{include = "genre_classifier_api"}]

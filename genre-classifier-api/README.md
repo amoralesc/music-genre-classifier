@@ -16,36 +16,48 @@ This project is the backend part of the music genre classifier. It's a simple AP
 
 - [Python ^3.10](https://www.python.org/downloads/) installed and the `python` / `py` commands available in the terminal
 - [Poetry](https://python-poetry.org/docs/#installation) installed and the `poetry` command available in the terminal. Follow the instructions in the link to install it.
+- [RabbitMQ](https://www.rabbitmq.com/download.html) installed and running.
 
 ### Running the project in dev mode
 
-1. Install the dependencies:
+1. Copy the `.env.example` file and rename it to `.env`.
+
+```bash
+cp .env.example .env
+```
+
+The following variables need to be set:
+
+- `MONGODB_URI` with the URI of your MongoDB Atlas cluster.
+- `CELERY_BROKER_URL` with the URL of your RabbitMQ server.
+
+2. Install the dependencies:
 
 ```bash
 poetry install
 ```
 
-2. Activate the virtual environment:
+3. Activate the virtual environment:
 
 ```bash
 poetry shell
 ```
 
-The following commands need to be executed in their own terminal window, while the virtual environment (step 2) is activated.
+The following commands need to be executed in their own terminal window, while the virtual environment (step 3) is activated.
 
-3. Start the celery worker:
+4. Start the celery worker:
 
 ```bash
 celery -A app.worker worker -l info -Q celery
 ```
 
-4. Run the API in development mode:
+5. Run the API in development mode:
 
 ```bash
 uvicorn app.main:app --reload
 ```
 
-5. (Optional) Run the flower dashboard to monitor the celery tasks:
+6. (Optional) Run the flower dashboard to monitor the celery tasks:
 
 ```bash
 celery -A app.worker flower --port=5555

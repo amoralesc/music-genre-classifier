@@ -1,45 +1,30 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import "./Home.css";
 
-import firebaseService from "../../services/firebase/firebase";
-import modelService from "../../services/api/model";
+// import firebaseService from "../../services/firebase/firebase";
+import { addResult } from "../../reducers/resultsReducer";
 
 import Button from "../Button/Button";
 import Dropzone from "../Dropzone/Dropzone";
 import AudioFile from "../AudioFile/AudioFile";
-import ToggleButtonGroup from "../ToggleButtonGroup/ToggleButtonGroup";
-import ToggleButton from "../ToggleButton/ToggleButton";
 import ProgressBar from "../ProgressBar/ProgressBar";
 
 const Home = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [file, setFile] = useState(null);
-  const [genre, setGenre] = useState([]);
   const [uploadProgress, setUploadProgress] = useState(0);
   const [task, setTask] = useState(null);
-
-  const genres = [
-    "blues",
-    "classical",
-    "country",
-    "disco",
-    "hiphop",
-    "jazz",
-    "metal",
-    "pop",
-    "reggae",
-    "rock",
-  ];
 
   const handleDrop = (acceptedFiles) => {
     if (acceptedFiles.length > 0) {
       setFile(acceptedFiles[0]);
 
       setUploadProgress(0);
-      setGenre([]);
       setTask(null);
     }
   };
@@ -48,41 +33,40 @@ const Home = () => {
     setFile(null);
   };
 
-  const handleGenreChange = (genre) => {
-    setGenre(genre);
-  };
-
-  const handlePredict = async (downloadURL) => {
+  const handlePredict = async (uploadInfo) => {
     const data = {
       fileName: file.name,
-      fileUrl: downloadURL,
-      userGenres: genre,
+      ...uploadInfo,
     };
-    const resultId = await modelService.predict(data);
-    navigate(`/results/${resultId}`);
+
+    const result = await dispatch(addResult(data));
+    navigate(`/results/${result.id}`);
   };
 
   const handleUpload = async () => {
     setTask("Uploading file to storage service...");
 
+    handlePredict("http");
+
+    /*
     if (file) {
       firebaseService.uploadFile(
         file,
         (progress) => {
           setUploadProgress(progress);
         },
-        (downloadURL) => {
-          console.log(downloadURL);
+        (uploadInfo) => {
+          console.log(uploadInfo);
           setTask("File uploaded successfully!");
 
-          handlePredict(downloadURL);
+          handlePredict(uploadInfo);
         },
         (error) => {
           console.log(error);
           setTask("Something went wrong...");
         }
       );
-    }
+    } */
   };
 
   return (
@@ -97,15 +81,6 @@ const Home = () => {
             <strong>Selected File</strong>
           </p>
           <AudioFile file={file} removeFile={handleRemoveFile} />
-
-          <p>What genre do you think this song is? Select all that apply.</p>
-          <ToggleButtonGroup value={genre} onChange={handleGenreChange}>
-            {genres.map((genre) => (
-              <ToggleButton key={genre} value={genre} variant="secondary">
-                {genre}
-              </ToggleButton>
-            ))}
-          </ToggleButtonGroup>
 
           <div className="upload-bar">
             {task ? (

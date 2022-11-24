@@ -11,6 +11,7 @@ packages = [{include = "genre_classifier_api"}]
 python = "^3.10"
 uvicorn = {extras = ["standard"], version = "^0.19.0"}
 fastapi = "^0.86.0"
+motor = "^3.1.1"
 
 
 [tool.poetry.group.dev.dependencies]

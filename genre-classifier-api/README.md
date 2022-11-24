@@ -34,7 +34,7 @@ poetry shell
 3. Run the project in development mode:
 
 ```bash
-uvicorn main:app --reload
+uvicorn app.main:app --reload
 ```
 
 The project will be running at http://localhost:8000. You are now ready to send requests to the API. 

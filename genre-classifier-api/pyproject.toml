@@ -2,7 +2,7 @@
 name = "genre-classifier-api"
 version = "0.1.0"
 description = "Music genre classifier API that hosts the ML models"
-authors = ["Alejandro Morales <a.moralesc@javeriana.edu.co>"]
+authors = ["Alejandro Morales <a.moralesc@javeriana.edu.co>", "Juan Sebastián Vargas Torres <email@a.com>"]
 license = "MIT"
 readme = "README.md"
 packages = [{include = "genre_classifier_api"}]
@@ -12,6 +12,8 @@ python = "^3.10"
 uvicorn = {extras = ["standard"], version = "^0.19.0"}
 fastapi = "^0.86.0"
 motor = "^3.1.1"
+celery = "^5.2.7"
+flower = "^1.2.0"
 
 
 [tool.poetry.group.dev.dependencies]

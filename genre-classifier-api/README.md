@@ -31,10 +31,24 @@ poetry install
 poetry shell
 ```
 
-3. Run the project in development mode:
+The following commands need to be executed in their own terminal window, while the virtual environment (step 2) is activated.
+
+3. Start the celery worker:
+
+```bash
+celery -A app.worker worker -l info -Q celery
+```
+
+4. Run the API in development mode:
 
 ```bash
 uvicorn app.main:app --reload
+```
+
+5. (Optional) Run the flower dashboard to monitor the celery tasks:
+
+```bash
+celery -A app.worker flower --port=5555
 ```
 
 The project will be running at http://localhost:8000. You are now ready to send requests to the API. 

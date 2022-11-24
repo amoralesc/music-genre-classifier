@@ -48,7 +48,7 @@ The following commands need to be executed in their own terminal window, while t
 4. Start the celery worker:
 
 ```bash
-celery -A app.worker worker -l info -Q celery
+celery -A app.worker worker -l info -Q celery -c 10 -P solo
 ```
 
 5. Run the API in development mode:

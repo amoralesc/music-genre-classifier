@@ -1,4 +1,5 @@
-import io, os, librosa, joblib, asyncio
+import io, os, librosa, joblib
+import asyncio
 import soundfile as sf
 import numpy as np
 from urllib.request import urlopen
@@ -72,6 +73,9 @@ def extract_audio_features(data) -> np.ndarray:
 
     # mfcc_mean mfcc_var
     mfcc = librosa.feature.mfcc(y=data, sr=22050)
+
+    if len(mfcc.shape) == 3:
+        mfcc = mfcc[0]
     mfcc_mean = mfcc.mean(axis=1)
     mfcc_var = mfcc.var(axis=1)
 
@@ -132,4 +136,5 @@ def classify_audio(self, result_id: str, request_file: dict) -> None:
             "probability": probability,
         },
     }
-    asyncio.run(result_crud.update_result(result_id, data))
+    loop = asyncio.get_event_loop()
+    loop.run_until_complete(result_crud.update_result(result_id, data))

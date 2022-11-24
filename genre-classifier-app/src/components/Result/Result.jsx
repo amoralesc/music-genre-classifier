@@ -12,7 +12,8 @@ import ProgressBar from "../ProgressBar/ProgressBar";
 const Result = ({ result }) => {
   if (!result) return null;
 
-  const { id, fileName, storagePath } = result;
+  const { id } = result;
+  const { fileName, storagePath } = result.file;
 
   const [file, setFile] = useState(null);
   const [status, setStatus] = useState(result.status);

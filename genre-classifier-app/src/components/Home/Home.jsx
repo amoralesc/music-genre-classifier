@@ -53,7 +53,6 @@ const Home = () => {
           setUploadProgress(progress);
         },
         (uploadInfo) => {
-          console.log(uploadInfo);
           setTask("File uploaded successfully!");
 
           handlePredict(uploadInfo);

@@ -4,8 +4,6 @@ import Button from "../Button/Button";
 import "./AudioFile.css";
 
 const AudioFile = ({ file, removeFile = undefined }) => {
-  if (!file) return null;
-
   const [isPlaying, toggleAudio] = useAudio(URL.createObjectURL(file));
 
   const handleRemoveFile = async () => {
@@ -17,7 +15,7 @@ const AudioFile = ({ file, removeFile = undefined }) => {
   };
 
   return (
-    <div className="uploaded-file">
+    <div className="audio-file">
       <div>
         {file.name} - {file.size} bytes
       </div>

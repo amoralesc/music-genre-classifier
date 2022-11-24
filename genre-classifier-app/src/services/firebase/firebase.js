@@ -1,4 +1,9 @@
-import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import {
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+  getBlob,
+} from "firebase/storage";
 import { storage } from "../../../firebase.config";
 
 const uploadFile = async (
@@ -7,8 +12,8 @@ const uploadFile = async (
   onUploadComplete,
   onError
 ) => {
-  const storageRef = ref(storage, `audio/${Date.now()}-${file.name}`);
-
+  const storagePath = `audio/${Date.now()}-${file.name}`;
+  const storageRef = ref(storage, storagePath);
   const uploadTask = uploadBytesResumable(storageRef, file);
 
   uploadTask.on(
@@ -22,14 +27,24 @@ const uploadFile = async (
     },
     () => {
       getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-        onUploadComplete(downloadURL);
+        onUploadComplete({
+          fileUrl: downloadURL,
+          storagePath,
+        });
       });
     }
   );
 };
 
+const downloadFile = async (storagePath) => {
+  const storageRef = ref(storage, storagePath);
+  const blob = await getBlob(storageRef);
+  return blob;
+};
+
 const firebaseService = {
   uploadFile,
+  downloadFile,
 };
 
 export default firebaseService;

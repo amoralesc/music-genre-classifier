@@ -3,13 +3,15 @@ import { useState, useEffect } from "react";
 import "./Result.css";
 
 import firebaseService from "../../services/firebase/firebase";
-import modelService from "../../services/api/model";
+import classifierService from "../../services/api/classifier";
 
 import AudioFile from "../AudioFile/AudioFile";
 import Alert from "../Alert/Alert";
 import ProgressBar from "../ProgressBar/ProgressBar";
 
 const Result = ({ result }) => {
+  if (!result) return null;
+
   const { id, fileName, storagePath } = result;
 
   const [file, setFile] = useState(null);
@@ -29,7 +31,7 @@ const Result = ({ result }) => {
 
   useEffect(() => {
     const interval = setInterval(async () => {
-      const result = await modelService.getResult(id);
+      const result = await classifierService.getResult(id);
       if (result.status.code === "SUCCESS") {
         clearInterval(interval);
 
@@ -44,8 +46,6 @@ const Result = ({ result }) => {
     }, 10000);
     return () => clearInterval(interval);
   }, [id]);
-
-  if (!result) return null;
 
   const { code, message } = status;
 

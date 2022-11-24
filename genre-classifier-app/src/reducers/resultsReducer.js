@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import modelService from "../services/api/model";
+import classifierService from "../services/api/classifier";
 
 const resultsSlice = createSlice({
   name: "results",
@@ -18,12 +18,12 @@ const resultsSlice = createSlice({
 export const { setResults, appendResult } = resultsSlice.actions;
 
 export const fetchResults = () => async (dispatch) => {
-  const results = await modelService.getResults();
+  const results = await classifierService.getResults();
   dispatch(setResults(results));
 };
 
 export const addResult = (data) => async (dispatch) => {
-  return modelService.predict(data).then((result) => {
+  return classifierService.predict(data).then((result) => {
     dispatch(appendResult(result));
     return result;
   });

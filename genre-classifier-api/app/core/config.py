@@ -1,10 +1,11 @@
-from pydantic import BaseSettings, AnyHttpUrl, validator, AnyUrl
+from pydantic import BaseSettings, validator, AnyUrl
+from typing import Any
 
 
 class Settings(BaseSettings):
     API_STR: str = "/api"
     PROJECT_NAME: str
-    BACKEND_CORS_ORIGINS: list[AnyHttpUrl] = []
+    BACKEND_CORS_ORIGINS: list[Any] = []
 
     @validator("BACKEND_CORS_ORIGINS", pre=True)
     def assemble_cors_origins(cls, v: str | list[str]) -> list[str]:

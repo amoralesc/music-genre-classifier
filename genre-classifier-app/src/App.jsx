@@ -21,7 +21,7 @@ const App = () => {
 
   const match = useMatch("/results/:id");
   const result = match
-    ? results.find((result) => result.id === Number(match.params.id))
+    ? results.find((result) => result.id === match.params.id)
     : null;
 
   return (

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import "./Home.css";
 
-// import firebaseService from "../../services/firebase/firebase";
+import firebaseService from "../../services/firebase/firebase";
 import { addResult } from "../../reducers/resultsReducer";
 
 import Button from "../Button/Button";
@@ -46,9 +46,6 @@ const Home = () => {
   const handleUpload = async () => {
     setTask("Uploading file to storage service...");
 
-    handlePredict("http");
-
-    /*
     if (file) {
       firebaseService.uploadFile(
         file,
@@ -66,7 +63,7 @@ const Home = () => {
           setTask("Something went wrong...");
         }
       );
-    } */
+    }
   };
 
   return (

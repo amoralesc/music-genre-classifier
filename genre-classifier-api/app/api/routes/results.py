@@ -5,14 +5,14 @@ from app import crud, schemas
 router = APIRouter()
 
 
-@router.get("/", response_model=list[schemas.ResultSchema])
-async def read_results() -> list[schemas.ResultSchema]:
+@router.get("/")
+async def read_results() -> list[dict]:
     results = await crud.result_crud.retrieve_results()
     return results
 
 
-@router.get("/{id}", response_model=schemas.ResultSchema)
-async def read_result(id: str) -> schemas.ResultSchema:
+@router.get("/{id}")
+async def read_result(id: str) -> dict:
     result = await crud.result_crud.retrieve_result(id)
     if result is None:
         raise HTTPException(status_code=404, detail="Result not found")

@@ -55,7 +55,7 @@ class ResultSchema(BaseModel):
         },
         title="Status",
     )
-    file_request: FileRequestSchema = Field(
+    file: FileRequestSchema = Field(
         ...,
         description="File requested for classification",
         example={

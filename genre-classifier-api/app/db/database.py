@@ -7,4 +7,3 @@ client = motor.motor_asyncio.AsyncIOMotorClient(settings.MONGODB_URI)
 database = client[settings.MONGODB_DATABASE]
 
 results_collection = database.get_collection("results")
-ml_models_collection = database.get_collection("ml_models")
